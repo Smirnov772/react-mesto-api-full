@@ -1,0 +1,12 @@
+.profile__avatar-pencil {
+  width: 120px;
+  height: 120px;
+  opacity   : 0;
+  background: rgba(0, 0, 0, 0.6);
+  background-image: url(../../../images/pencil.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border: none;
+ 
+  
+}

@@ -1,0 +1,14 @@
+.user-auth__link {
+  height: 17px;
+  font-size: 14px;
+  line-height: 17px;
+  margin-top: 16px;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+.user-auth__link:hover {
+    opacity   : .5;
+    transition: 0.3s;
+    cursor    : pointer;
+  }

@@ -1,0 +1,17 @@
+@import url("./__button/user-auth__button.css");
+@import url("./__container/user-auth__container.css");
+@import url("./__form/user-auth__form.css");
+@import url("./__paragraph/user-auth__paragraph.css");
+@import url("./__input/user-auth__input.css");
+@import url("./__link/user-auth__link.css");
+
+.user-auth {
+  max-width: 358px;
+  display: flex;
+  
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  padding: 0 30px;
+}

@@ -1,0 +1,15 @@
+@import url(./_name/popup__form-input_name.css);
+@import url(./_occupation/popup__form-input_occupation.css);
+@import url(./_type/_error/popup__form-input_type_error.css);
+
+.popup__form-input {
+    width        : 100%;
+    font-family  : Inter, Arial, sans-serif;
+    font-style   : normal;
+    font-weight  : normal;
+    font-size    : 14px;
+    line-height  : 17px;
+    border       : none;
+    border-bottom: 1px solid #000000;
+    margin       : 29px 0 0 0;
+}

@@ -1,0 +1,13 @@
+.user-auth__button {
+  border: none;
+  
+  border-radius: 2px;
+  height: 50px;
+  width: 100%;
+  margin-top: 216px;
+}
+.user-auth__button:hover {
+  opacity   : .5;
+  transition: 0.3s;
+  cursor    : pointer;
+}

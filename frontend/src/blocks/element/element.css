@@ -1,0 +1,20 @@
+@import url(./__image/element__image.css);
+@import url(./__like/element__like.css);
+@import url(./__paragraph/element__paragraph.css);
+@import url(./__remove/element__remove.css);
+@import url(./__like-conteiner/element__like-conteiner.css);
+@import url(./__like-number/element__like-number.css);
+
+.element {
+  max-width: 282px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: grid;
+  grid-template-areas:
+    "image image"
+    "text like";
+  grid-template-columns: 1fr 70px;
+  grid-template-rows: 282px 1fr;
+  overflow: hidden;
+  position: relative;
+}

@@ -1,0 +1,19 @@
+@import url(../page/__content/page__content.css);
+
+.page {
+  max-width       : 1280px;
+  position        : relative;
+  font-family     : Inter, Arial, sans-serif;
+  font-style      : normal;
+  background-color: #000000;
+  color           : #FFFFFF;
+  margin          : 0 auto;
+  padding         : 0 10px;
+}
+
+
+@media screen and (max-width: 620px) {
+  .page {
+    padding: 0;
+  }
+}

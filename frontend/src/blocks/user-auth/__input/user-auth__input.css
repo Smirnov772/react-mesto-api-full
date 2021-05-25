@@ -1,0 +1,16 @@
+.user-auth__input {
+  max-width: 358px;
+  width: 100%;
+  color: #FFFFFF;
+  font-family: Inter, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  border: none;
+  background-color: black;
+  border-radius: 0;
+  border-bottom: 2px solid #cccccc;
+  margin: 29px 0 0 0;
+  padding: 0;
+}
