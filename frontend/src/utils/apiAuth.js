@@ -15,6 +15,7 @@ class ApiAuth {
     return fetch(`${this._url}/signup`, {
       method: "POST",
       headers: this._headers,
+      'credentials': 'include',
       body: JSON.stringify({
         password: `${password}`,
         email: `${email}`,
@@ -26,6 +27,7 @@ class ApiAuth {
     return fetch(`${this._url}/signin`, {
       method: "POST",
       headers: this._headers,
+      'credentials': 'include',
       body: JSON.stringify({
         password: `${password}`,
         email: `${email}`,
@@ -34,21 +36,24 @@ class ApiAuth {
   }
 
   JWTValid(jwt) {
+    console.log(jwt)
       console.log(`Bearer ${jwt}`)
     return fetch(`${this._url}/users/me`, {
       method: "GET",
+       'credentials': 'include',
       headers: {
         "Content-Type": "application/json",
         "Authorization" : `Bearer ${jwt}`
-    } 
+    },
     }).then(onError);
   }
 }
-
+const jwt = localStorage.getItem("JWT");
 const apiAuth = new ApiAuth({
-  url: "https://auth.nomoreparties.co",
+  url: "http://localhost:3001",
   headers: {
     "Content-Type": "application/json",
+    "Authorization" : `Bearer ${jwt}`
   },
 });
 

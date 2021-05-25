@@ -6,22 +6,24 @@ const onError = (res) => {
 };
 
 class Api {
-  constructor({ url, cohortId, headers }) {
+  constructor({ url, headers }) {
     this._url = url;
-    this._cohortId = cohortId;
+    // this._cohortId = cohortId;
     this._headers = headers;
   }
   getAllCards() {
-    return fetch(`${this._url}/${this._cohortId}/cards`, {
+    return fetch(`${this._url}/cards`, {
       method: "GET",
       headers: this._headers,
+      'credentials': 'include',
     }).then(onError);
   }
 
   addCard(dataCards) {
-    return fetch(`${this._url}/${this._cohortId}/cards`, {
+    return fetch(`${this._url}/cards`, {
       method: "POST",
       headers: this._headers,
+      'credentials': 'include',
       body: JSON.stringify({
         name: `${dataCards.name}`,
         link: `${dataCards.link}`,
@@ -30,16 +32,18 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._url}/${this._cohortId}/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: "GET",
       headers: this._headers,
+      'credentials': 'include',
     }).then(onError);
   }
 
   renameUser(name, job) {
-    return fetch(`${this._url}/${this._cohortId}/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: "PATCH",
       headers: this._headers,
+      'credentials': 'include',
       body: JSON.stringify({
         name: `${name}`,
         about: `${job}`,
@@ -49,16 +53,18 @@ class Api {
 
   removeCard(id) {
     console.log(id)
-    return fetch(`${this._url}/${this._cohortId}/cards/${id}`, {
+    return fetch(`${this._url}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
+      'credentials': 'include',
     }).then(onError);
   }
   editAvatar(avatarId) {
     console.log(avatarId)
-    return fetch(`${this._url}/${this._cohortId}/users/me/avatar`, {
+    return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
+      'credentials': 'include',
       body: JSON.stringify({
         avatar: `${avatarId}`,
       }),
@@ -66,33 +72,36 @@ class Api {
   }
   setLike(id) {
     console.log(id);
-    return fetch(`${this._url}/${this._cohortId}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/likes/${id}`, {
       method: "PUT",
       headers: this._headers,
+      'credentials': 'include',
     }).then(onError);
   }
   removeLike(id) {
     console.log(id);
-    return fetch(`${this._url}/${this._cohortId}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/likes/${id}`, {
       method: "DELETE",
       headers: this._headers,
+      'credentials': 'include',
     }).then(onError);
   }
   changeLikeCardStatus(id, isLiked) {
     console.log(id, isLiked);
-    return fetch(`${this._url}/${this._cohortId}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/likes/${id}`, {
       method: isLiked ? "PUT" : "DELETE",
       headers: this._headers,
+      'credentials': 'include',
     }).then(onError);
   }
 }
-
+const jwt = localStorage.getItem("JWT");
 const api = new Api({
-  url: "https://mesto.nomoreparties.co/v1",
-  cohortId: "cohort-20",
+  url: "http://localhost:3001",
+
   headers: {
-    authorization: "8b4bf4c7-50a5-4055-8a00-6f47d910a5d3",
     "Content-Type": "application/json",
+    "Authorization" : `Bearer ${jwt}`
   },
 });
 

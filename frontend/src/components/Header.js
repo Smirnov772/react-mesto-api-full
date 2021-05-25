@@ -26,17 +26,17 @@ function Header(props) {
             </Link>
           </Route>
 
-          <Route path="/sign-in">
+          <Route path="/signin">
             <li>
-              <Link to="sign-up" className="header__link">
+              <Link to="signup" className="header__link">
                 Регистрация
               </Link>
             </li>
           </Route>
-          <Route path="/sign-up">
+          <Route path="/signup">
             {" "}
             <li>
-              <Link to="sign-in" className="header__link">
+              <Link to="signin" className="header__link">
                 Войти
               </Link>
             </li>

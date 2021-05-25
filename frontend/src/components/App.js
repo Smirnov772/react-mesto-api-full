@@ -42,14 +42,15 @@ function App() {
     if (loggedIn) {
       history.push("/main");
     }
-  }, [loggedIn]);
+  }, [history, loggedIn]);
 
   function checkToken() {
-    const jwt = localStorage.getItem("jwt");
+    const jwt = localStorage.getItem("JWT");
     if (jwt) {
       apiAuth.JWTValid(jwt).then((res) => {
-        setUserData({ ...userData, email: res.data.email });
+        setUserData({ ...userData, email: res.email });
         setLoggedIn(true);
+        console.log(jwt)
       });
     }
   }
@@ -57,7 +58,7 @@ function App() {
     apiAuth
       .register(input.password, input.email)
       .then((res) => {
-        history.push("/sign-in");
+        history.push("/signin");
         setIsInfoTooltipStatus(true);
         return;
       })
@@ -72,9 +73,9 @@ function App() {
     apiAuth
       .authorize(input.password, input.email)
       .then((data) => {
-        localStorage.setItem("jwt", data.token);
+        localStorage.setItem("JWT", data.token);
         setLoggedIn(true);
-        history.push("/main");
+        history.push("/cards");
         setUserData({ ...userData, email: input.email });
         console.log(`then ${data.token}`);
 
@@ -87,8 +88,8 @@ function App() {
       });
   }
   function userRemove() {
-    localStorage.removeItem("jwt");
-    history.push("/sign-in");
+    localStorage.removeItem("JWT");
+    history.push("/signin");
     setLoggedIn(false);
     setUserData("");
   }
@@ -199,10 +200,10 @@ function App() {
             userData={userData.email}
           />
           <Switch>
-            <Route path="/sign-in">
+            <Route path="/signin">
               <Login onSubmit={userAuthorize} />
             </Route>
-            <Route path="/sign-up">
+            <Route path="/signup">
               <Register onSubmit={userRegister} />
             </Route>
             <ProtectedRoute
@@ -218,7 +219,7 @@ function App() {
               onCardDelete={handleCardDelete}
             />
             <Route exact path="/">
-              {loggedIn ? <Redirect to="/main" /> : <Redirect to="/sign-in" />}
+              {loggedIn ? <Redirect to="/main" /> : <Redirect to="/signin" />}
             </Route>
           </Switch>
 
