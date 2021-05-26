@@ -16,11 +16,8 @@ const auth = require('./middlewares/auth');
 
 const app = express();
 const PORT = 3000;
-app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true,
-}));
 app.use(express.json());
+app.use(cors());
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
