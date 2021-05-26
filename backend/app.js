@@ -15,7 +15,7 @@ const { NotFoundError } = require('./errors/index');
 const auth = require('./middlewares/auth');
 
 const app = express();
-const PORT = 3001;
+const PORT = 3000;
 app.use(cors({
   origin: 'http://localhost:3000',
   credentials: true,
