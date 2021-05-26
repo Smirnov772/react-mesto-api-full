@@ -18,8 +18,7 @@ const app = express();
 const PORT = 3001;
 app.use(express.json());
 app.use(cors({
-  origin: true,
-  exposedHeaders: '*',
+  origin: 'front15.smistav.nomoredomains.monster',
   credentials: true,
 }));
 mongoose.connect('mongodb://localhost:27017/mestodb', {
