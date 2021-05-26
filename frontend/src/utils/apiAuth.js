@@ -50,7 +50,7 @@ class ApiAuth {
 }
 const jwt = localStorage.getItem("JWT");
 const apiAuth = new ApiAuth({
-  url: "http://localhost:3001",
+  url: "http://api.front15.smistav.nomoredomains.icu",
   headers: {
     "Content-Type": "application/json",
     "Authorization" : `Bearer ${jwt}`
