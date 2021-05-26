@@ -18,7 +18,7 @@ const app = express();
 const PORT = 3001;
 app.use(express.json());
 app.use(cors({
-  origin: '*',
+  origin: true,
   exposedHeaders: '*',
   credentials: true,
 }));
