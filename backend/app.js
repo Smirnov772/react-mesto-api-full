@@ -15,9 +15,13 @@ const { NotFoundError } = require('./errors/index');
 const auth = require('./middlewares/auth');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: true,
+  exposedHeaders: '*',
+  credentials: true,
+}));
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
