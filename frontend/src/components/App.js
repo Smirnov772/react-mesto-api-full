@@ -40,7 +40,7 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-      history.push("/main");
+      history.push("/cards");
     }
   }, [history, loggedIn]);
 
