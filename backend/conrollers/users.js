@@ -35,22 +35,17 @@ const getUsersId = (req, res, next) => {
 
 const createUser = (req, res, next) => {
   const {
-    name, email, password, about, avatar,
+    email, password,
   } = req.body;
   bcrypt
     .hash(password, 10)
     .then((hash) => User.create({
-      name,
       email,
       password: hash,
-      about,
-      avatar,
+
     }))
     .then((users) => res.send({
-      name: users.name,
       email: users.email,
-      about: users.about,
-      avatar: users.avatar,
       _id: users._id,
     }))
     .catch((err) => {
@@ -65,6 +60,40 @@ const createUser = (req, res, next) => {
       } else {
         next(new ServerError('Ошибка сервера.'));
       }
+    });
+};
+// const deleteUser = (req, res, next) => {
+//   User.findByIdAndDelete(req.user._id)
+//     .then((users) => {
+//       if (!users) {
+//         throw new NotFoundError(' Пользователь с указанным _id не найден.');
+//       }
+//       res.send(users, ('пользователь удален'));
+//     })
+//     .catch((err) => {
+//       if (err.kind === 'ObjectId') {
+//         next(new BadRequestError('Передан некорректный _id.'));
+//       }
+//       next(new ServerError('Ошибка сервера.'));
+//     });
+// };
+const deleteUser = (req, res, next) => {
+  User.findById(req.params.userId)
+    .then((user) => {
+      if (!user) {
+        throw new NotFoundError('Карточка с указанным _id не найдена.');
+      } else {
+        User.findByIdAndDelete(req.params.userId)
+          .then(() => {
+            res.send(user);
+          })
+          .catch((err) => next(err));
+      }
+    })
+    .catch((err) => {
+      if (err.kind === 'ObjectId') {
+        next(new BadRequestError('Передан некорректный _id.'));
+      } else { next(err); }
     });
 };
 
@@ -148,6 +177,7 @@ const getCurrentUser = (req, res, next) => {
 module.exports = {
   getUsers,
   createUser,
+  deleteUser,
   getUsersId,
   updateUsers,
   updateUsersAvatar,

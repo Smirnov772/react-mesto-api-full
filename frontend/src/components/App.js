@@ -24,15 +24,15 @@ function App() {
   });
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState([]);
-  console.log(userData);
-  useEffect(() => {
-    api
-      .getUserInfo()
-      .then((dataUser) => {
-        setCurrentUser(dataUser);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+
+  // useEffect(() => {
+  //   api
+  //     .getUserInfo()
+  //     .then((dataUser) => {
+  //       setCurrentUser(dataUser);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   useEffect(() => {
     checkToken();
@@ -41,6 +41,12 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
+      api
+      .getUserInfo()
+      .then((dataUser) => {
+        setCurrentUser(dataUser);
+      })
+      .catch((err) => console.log(err));
       history.push("/main");
     }
   }, [history, loggedIn]);
@@ -150,14 +156,14 @@ function App() {
   }
 
   const [cards, setCards] = useState([]);
-  useEffect(() => {
+  useEffect(() => {if (loggedIn){
     api
       .getAllCards()
       .then((dataCard) => {
         setCards(dataCard);
       })
-      .catch((err) => console.log(err));
-  }, []);
+      .catch((err) => console.log(err));}
+  }, [loggedIn]);
 
   function handleAddPlaceSubmit(dataNewCard) {
     console.log(dataNewCard);

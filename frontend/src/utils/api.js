@@ -14,7 +14,7 @@ class Api {
   getAllCards() {
     return fetch(`${this._url}/cards`, {
       method: "GET",
-      headers: this._headers,
+      headers: {...this._headers, "Authorization": `Bearer ${localStorage.getItem("JWT")}`},
       'credentials': 'include',
     }).then(onError);
   }
@@ -22,7 +22,7 @@ class Api {
   addCard(dataCards) {
     return fetch(`${this._url}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: {...this._headers, "Authorization": `Bearer ${localStorage.getItem("JWT")}`},
       'credentials': 'include',
       body: JSON.stringify({
         name: `${dataCards.name}`,
@@ -34,7 +34,7 @@ class Api {
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
-      headers: this._headers,
+      headers: {...this._headers, "Authorization": `Bearer ${localStorage.getItem("JWT")}`},
       'credentials': 'include',
     }).then(onError);
   }
@@ -42,7 +42,7 @@ class Api {
   renameUser(name, job) {
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {...this._headers, "Authorization": `Bearer ${localStorage.getItem("JWT")}`},
       'credentials': 'include',
       body: JSON.stringify({
         name: `${name}`,
@@ -55,7 +55,7 @@ class Api {
     console.log(id)
     return fetch(`${this._url}/cards/${id}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {...this._headers, "Authorization": `Bearer ${localStorage.getItem("JWT")}`},
       'credentials': 'include',
     }).then(onError);
   }
@@ -63,7 +63,7 @@ class Api {
     console.log(avatarId)
     return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {...this._headers, "Authorization": `Bearer ${localStorage.getItem("JWT")}`},
       'credentials': 'include',
       body: JSON.stringify({
         avatar: `${avatarId}`,
@@ -74,7 +74,7 @@ class Api {
     console.log(id);
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: "PUT",
-      headers: this._headers,
+      headers: {...this._headers, "Authorization": `Bearer ${localStorage.getItem("JWT")}`},
       'credentials': 'include',
     }).then(onError);
   }
@@ -82,7 +82,7 @@ class Api {
     console.log(id);
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {...this._headers, "Authorization": `Bearer ${localStorage.getItem("JWT")}`},
       'credentials': 'include',
     }).then(onError);
   }
@@ -90,17 +90,16 @@ class Api {
     console.log(id, isLiked);
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: isLiked ? "PUT" : "DELETE",
-      headers: this._headers,
+      headers: {...this._headers, "Authorization": `Bearer ${localStorage.getItem("JWT")}`},
       'credentials': 'include',
     }).then(onError);
   }
 }
-const jwt = localStorage.getItem("JWT");
+
 const api = new Api({
-  url: "http://api.front15.smistav.nomoredomains.icu",
+  url: "http://localhost:3001",
   headers: {
-    "Content-Type": "application/json",
-    "Authorization" : `Bearer ${jwt}`
+    "Content-Type": "application/json"
   },
 });
 
