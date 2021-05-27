@@ -98,13 +98,11 @@ const validateUpdateUser = celebrate({
     name: Joi.string()
       .min(2)
       .max(30)
-      .required()
-      .default('Жак-Ив Кусто'),
+      .required(),
     about: Joi.string()
       .min(2)
       .max(30)
-      .required()
-      .default('Исследователь')
+      .required(),
   })
 });
 
