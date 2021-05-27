@@ -57,7 +57,9 @@ function App() {
       apiAuth.JWTValid(jwt).then((res) => {
         setUserData({ ...userData, email: res.email });
         setLoggedIn(true);
-        console.log(jwt)
+        console.log(`true ${jwt}`)
+      }).catch(()=>{
+         localStorage.removeItem("JWT")
       });
     }
   }
