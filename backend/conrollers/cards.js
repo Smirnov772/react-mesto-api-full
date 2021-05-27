@@ -3,6 +3,7 @@ const {
   NotFoundError,
   BadRequestError,
   ServerError,
+  Forbiddenerror,
 } = require('../errors/index');
 
 const getCards = (req, res, next) => {
@@ -37,7 +38,7 @@ const deleteCards = (req, res, next) => {
         Card.findById(req.params.cardId)
           .then(() => {
             if (!card.owner.equals(req.user._id)) {
-              throw new BadRequestError('Вы не владелец карточки.');
+              throw new Forbiddenerror('Вы не владелец карточки.');
             } else {
               Card.findByIdAndDelete(req.params.cardId)
                 .then(() => {
