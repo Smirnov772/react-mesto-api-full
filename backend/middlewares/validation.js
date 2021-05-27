@@ -17,9 +17,9 @@ const validateRegisterBody = celebrate({
       .required()
       .messages({
         'string.min': 'Миниvальное поле 2 символа',
-        'any.required': 'Обязательное поле',
-      }),
-  }),
+        'any.required': 'Обязательное поле'
+      })
+  })
 });
 
 const validateRegistration = celebrate({
@@ -38,7 +38,7 @@ const validateRegistration = celebrate({
       .required()
       .messages({
         'string.min': 'Миниvальное поле 2 символа',
-        'any.required': 'Обязательное поле',
+        'any.required': 'Обязательное поле'
       }),
     name: Joi.string()
       .min(2)
@@ -56,9 +56,9 @@ const validateRegistration = celebrate({
         return helpers.messages('Не корректная ссылка');
       })
       .default(
-        'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
-      ),
-  }),
+        'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png'
+      )
+  })
 });
 
 const validateAvatar = celebrate({
@@ -71,9 +71,9 @@ const validateAvatar = celebrate({
         return helpers.messages('Не корректная ссылка');
       })
       .default(
-        'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
-      ),
-  }),
+        'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png'
+      )
+  })
 });
 
 const validateCreateCard = celebrate({
@@ -90,21 +90,22 @@ const validateCreateCard = celebrate({
         }
         return helpers.message('Не корректный адрес');
       })
-      .message({ 'any.required': 'Обязательное поле' }),
-  }),
+      .message({ 'any.required': 'Обязательное поле' })
+  })
 });
 const validateUpdateUser = celebrate({
   body: Joi.object().keys({
-
     name: Joi.string()
       .min(2)
       .max(30)
+      .required()
       .default('Жак-Ив Кусто'),
     about: Joi.string()
       .min(2)
       .max(30)
-      .default('Исследователь'),
-  }),
+      .required()
+      .default('Исследователь')
+  })
 });
 
 module.exports = {
@@ -112,5 +113,5 @@ module.exports = {
   validateRegistration,
   validateAvatar,
   validateCreateCard,
-  validateUpdateUser,
+  validateUpdateUser
 };

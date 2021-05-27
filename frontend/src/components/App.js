@@ -40,7 +40,7 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-      history.push("/cards");
+      history.push("/main");
     }
   }, [history, loggedIn]);
 
@@ -75,7 +75,7 @@ function App() {
       .then((data) => {
         localStorage.setItem("JWT", data.token);
         setLoggedIn(true);
-        history.push("/cards");
+        history.push("/main");
         setUserData({ ...userData, email: input.email });
         console.log(`then ${data.token}`);
 
