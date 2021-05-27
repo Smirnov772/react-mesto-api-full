@@ -1,4 +1,3 @@
-
 const jwt = require('jsonwebtoken');
 
 const { UnAuthorizationError } = require('../errors/index');
