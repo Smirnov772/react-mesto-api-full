@@ -36,8 +36,7 @@ class ApiAuth {
   }
 
   JWTValid(jwt) {
-    console.log(jwt)
-      console.log(`Bearer ${jwt}`)
+
     return fetch(`${this._url}/users/me`, {
       method: "GET",
        'credentials': 'include',
@@ -50,7 +49,7 @@ class ApiAuth {
 }
 const jwt = localStorage.getItem("JWT");
 const apiAuth = new ApiAuth({
-  url: "http://api.front15.smistav.nomoredomains.icu",
+  url: "http://localhost:3001",
   headers: {
     "Content-Type": "application/json",
     "Authorization" : `Bearer ${jwt}`

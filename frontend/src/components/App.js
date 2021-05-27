@@ -20,7 +20,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({
     name: "Жак Ив Кусто",
     about: "Иследователь океана",
-    avatar: "#",
+    avatar: " ",
   });
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState([]);

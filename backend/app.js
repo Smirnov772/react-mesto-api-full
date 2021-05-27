@@ -7,7 +7,7 @@ const cardsRouter = require('./routes/cards');
 const errorHandler = require('./middlewares/error-handler');
 const {
   validateRegisterBody,
-  validateRegistration
+  validateRegistration,
 } = require('./middlewares/validation');
 const { createUser, login } = require('./conrollers/users');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -26,7 +26,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 
 app.use(requestLogger);
@@ -43,4 +43,4 @@ app.use((req, res, next) => {
 app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
-app.listen(PORT, () => {console.log(PORT)});
+app.listen(PORT, () => { console.log(PORT); });

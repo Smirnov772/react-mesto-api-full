@@ -97,8 +97,7 @@ class Api {
 }
 const jwt = localStorage.getItem("JWT");
 const api = new Api({
-  url: "http://api.front15.smistav.nomoredomains.icu",
-
+  url: "http://localhost:3001",
   headers: {
     "Content-Type": "application/json",
     "Authorization" : `Bearer ${jwt}`
