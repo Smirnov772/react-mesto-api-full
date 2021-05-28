@@ -40,24 +40,6 @@ const validateRegistration = celebrate({
         'string.min': 'Миниvальное поле 2 символа',
         'any.required': 'Обязательное поле',
       }),
-    name: Joi.string()
-      .min(2)
-      .max(30)
-      .default('Жак-Ив Кусто'),
-    about: Joi.string()
-      .min(2)
-      .max(30)
-      .default('Исследователь'),
-    avatar: Joi.string()
-      .custom((value, helpers) => {
-        if (validator.isURL(value, { require_protocol: true })) {
-          return value;
-        }
-        return helpers.messages('Не корректная ссылка');
-      })
-      .default(
-        'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
-      ),
   }),
 });
 
