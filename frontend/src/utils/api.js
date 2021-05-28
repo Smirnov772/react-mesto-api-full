@@ -72,7 +72,7 @@ class Api {
   }
   setLike(id) {
     console.log(id);
-    return fetch(`${this._url}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       method: "PUT",
       headers: {...this._headers, "Authorization": `Bearer ${localStorage.getItem("JWT")}`},
       'credentials': 'include',
@@ -80,7 +80,7 @@ class Api {
   }
   removeLike(id) {
     console.log(id);
-    return fetch(`${this._url}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       method: "DELETE",
       headers: {...this._headers, "Authorization": `Bearer ${localStorage.getItem("JWT")}`},
       'credentials': 'include',
@@ -88,7 +88,7 @@ class Api {
   }
   changeLikeCardStatus(id, isLiked) {
     console.log(id, isLiked);
-    return fetch(`${this._url}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       method: isLiked ? "PUT" : "DELETE",
       headers: {...this._headers, "Authorization": `Bearer ${localStorage.getItem("JWT")}`},
       'credentials': 'include',
@@ -97,7 +97,7 @@ class Api {
 }
 
 const api = new Api({
-  url: "https://api.front15.smistav.nomoredomains.icu",
+  url: "http://localhost:3001",
   headers: {
     "Content-Type": "application/json"
   },

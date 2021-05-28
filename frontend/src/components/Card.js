@@ -14,11 +14,14 @@ function Card(props) {
   function handleDeleteClick() {
     props.onCardDelete(props);
   }
-  console.log(props.owner)
+  
   const isOwn = props.owner === currentUser._id;
   const cardDeleteButtonClassName = isOwn ? "block" : "none";
-  const isLiked = props.likes.some((i) => i._id === currentUser._id);
+  const isLiked = props.likes.some((i) => i === currentUser._id);
   const cardLikeButtonClassName = isLiked ? "element__like_enable" : " ";
+  console.log(isLiked);
+  // console.log(props.likes._id);
+
   return (
     <div className="element">
       <img
