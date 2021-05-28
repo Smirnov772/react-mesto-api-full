@@ -49,7 +49,7 @@ class ApiAuth {
 }
 
 const apiAuth = new ApiAuth({
-  url: "http://api.front15.smistav.nomoredomains.icu",
+  url: "https://api.front15.smistav.nomoredomains.icu",
   headers: {
     "Content-Type": "application/json"
   },
